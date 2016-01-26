@@ -12,12 +12,11 @@ describe('Github Profile finder', function() {
   });
 
   it('finds profiles', function() {
-    browser.get('http://localhost:8080');
 
     searchBox.sendKeys('Htunny');
     searchButton.click();
 
-    expect(element(by.binding('user.login')).getText()).
-      toEqual('Htunny');
+    var profiles = element.all(by.repeater('user in searchCtrl.searchResult.items'));
+    expect(profiles.last(0).getText()).toEqual('Htunny');
   });
 });
