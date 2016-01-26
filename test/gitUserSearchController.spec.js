@@ -17,11 +17,16 @@ describe('GitUserSearchController', function() {
     beforeEach(inject(function($httpBackend) {
       httpBackend = $httpBackend
       httpBackend
-        .when("GET", "https://api.github.com/search/users?q=Htunny")
+        .expectGET("https://api.github.com/search/users?q=hello%26access_token%3Db353e6ec0b2402e01284d55ad5bd315320cb3d88")
         .respond(
           { items: items }
         );
     }));
+
+    afterEach(function() {
+      httpBackend.verifyNoOutstandingExpectation();
+      httpBackend.verifyNoOutstandingRequest();
+    });
     var items = [
       {
         "login": "Htunny",
@@ -30,7 +35,7 @@ describe('GitUserSearchController', function() {
       }
     ];
     it('displays search results', function() {
-        ctrl.searchTerm = 'Htunny';
+        ctrl.searchTerm = ('hello&access_token=b353e6ec0b2402e01284d55ad5bd315320cb3d88');
         ctrl.doSearch();
         httpBackend.flush();
         expect(ctrl.searchResult.items).toEqual(items);
