@@ -30,7 +30,7 @@
       <p>Search results for <strong>{{searchCtrl.searchTerm}}</strong>:</p>
       <li class="inline-list" ng-repeat="user in searchCtrl.searchResult.items">
         <p><a ng-href="{{user.html_url}}">{{user.login}}</a></p>
-        <img ng-src="{{user.avatar_url}}" height="150" width="150">
+        <img class="img-rounded" ng-src="{{user.avatar_url}}" height="150" width="150">
       </li>
     </ul>
     <!-- <li class="list-group-item">

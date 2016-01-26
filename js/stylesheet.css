@@ -8,5 +8,6 @@ li {
     vertical-align: top;
     margin: 30px;
     background: #dfe3ee;
-
+    border-radius: 25px;
+    padding: 20px;
 }
