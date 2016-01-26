@@ -13,10 +13,10 @@ describe('Github Profile finder', function() {
 
   it('finds profiles', function() {
 
-    searchBox.sendKeys('Htunny');
+    searchBox.sendKeys('Htunn');
     searchButton.click();
 
     var profiles = element.all(by.repeater('user in searchCtrl.searchResult.items'));
-    expect(profiles.last(0).getText()).toEqual('Htunny');
+    expect(profiles.first(0).getText()).toEqual('Htunny');
   });
 });

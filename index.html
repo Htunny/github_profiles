@@ -28,7 +28,7 @@
     </form>
     <ul class="list-group text-center" ng-show="searchCtrl.searchTerm">
       <p>Search results for <strong>{{searchCtrl.searchTerm}}</strong>:</p>
-      <li ng-repeat="user in searchCtrl.searchResult.items">
+      <li class="inline-list" ng-repeat="user in searchCtrl.searchResult.items">
         <p><a ng-href="{{user.html_url}}">{{user.login}}</a></p>
         <img ng-src="{{user.avatar_url}}" height="150" width="150">
       </li>
