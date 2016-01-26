@@ -1,42 +1,57 @@
 <!doctype html>
 <html lang="en" ng-app="GitUserSearch">
-  <head>
-    <meta charset="utf-8">
-    <title>Github user search</title>
-    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
-    <script src="bower_components/jquery/dist/jquery.js"></script>
-    <script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/angular-resource/angular-resource.js"></script>
-    <script src="bower_components/angular-route/angular-route.js"></script>
-    <script src="js/app.js"></script>
-    <script src="js/gitUserSearchController.js"></script>
-    <script src="js/searchFactory.js"></script>
-    <link rel="stylesheet" type="text/css" href="js/stylesheet.css">
-  </head>
+<head>
+  <meta charset="utf-8">
+  <title>Github user search</title>
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+  <script src="bower_components/jquery/dist/jquery.js"></script>
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-resource/angular-resource.js"></script>
+  <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/gitUserSearchController.js"></script>
+  <script src="js/searchFactory.js"></script>
+  <link rel="stylesheet" type="text/css" href="js/stylesheet.css">
+</head>
 
-  <body ng-controller="GitUserSearchController as searchCtrl">
-    <div>
-      <div class="col-md-8 text-right" >
-          <h1><a href="/">GitHub User Search</a></h1>
-        </div>
-        <br>
-        <div class="page-header">
-        </div>
-      <form class="form-horizontal text-center">
-        <input type="text" ng-model="searchCtrl.searchTerm" ng-change="searchCtrl.doSearch()" ng-model-options="{ updateOn: 'default blur', debounce: {'default': 500, 'blur': 0} }">
-        <button class="btn btn-success btn-sm" ng-click="searchCtrl.doSearch()">Search</button>
-      </form>
-      <ul class="list-group text-center" ng-show="searchCtrl.searchTerm">
-        <p>Search results for <strong>{{searchCtrl.searchTerm}}</strong>:</p>
-        <li ng-repeat="user in searchCtrl.searchResult.items">
-          <p><a ng-href="{{user.html_url}}">{{user.login}}</a></p>
-          <img ng-src="{{user.avatar_url}}" height="150" width="150">
-        </li>
-      </ul>
-        <!-- <li class="list-group-item">
-          <img src="https://avatars.githubusercontent.com/u/30216?v=3&s=50">
-          <a href="https://github.com/tansaku">tansaku</a>
-        </li> -->
+<body ng-controller="GitUserSearchController as searchCtrl">
+  <div>
+    <div class="col-sm-12 text-center" >
+      <h1><a href="/">GitHub User Search</a></h1>
     </div>
-  </body>
+    <br>
+    <div class="page-header">
+    </div>
+    <form class="form-horizontal text-center">
+      <input type="text" ng-model="searchCtrl.searchTerm" ng-change="searchCtrl.doSearch()" ng-model-options="{ updateOn: 'default blur', debounce: {'default': 500, 'blur': 0} }">
+      <button class="btn btn-success btn-md" ng-click="searchCtrl.doSearch()">Search</button>
+    </form>
+    <ul class="list-group text-center" ng-show="searchCtrl.searchTerm">
+      <p>Search results for <strong>{{searchCtrl.searchTerm}}</strong>:</p>
+      <li ng-repeat="user in searchCtrl.searchResult.items">
+        <p><a ng-href="{{user.html_url}}">{{user.login}}</a></p>
+        <img ng-src="{{user.avatar_url}}" height="150" width="150">
+      </li>
+    </ul>
+    <!-- <li class="list-group-item">
+    <img src="https://avatars.githubusercontent.com/u/30216?v=3&s=50">
+    <a href="https://github.com/tansaku">tansaku</a>
+  </li> -->
+</div>
+<br>
+<div style="border-top: solid 1px #eee; padding-top: 1em;">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 text-center">
+        <p class="text-muted">GitHub User Search | © Copyright 2016, All Rights Reserved
+          <br>| GitHub User Search created by Andrew Htun, while at <a href="http://www.makersacademy.com/" target="_blank">Makers Academy</a> | <a href="https://github.com/Htunny" target="_blank">GitHub</a> | <a href="https://htunnycodes.wordpress.com/" target="_blank">Blog</a> |</p>
+          <p class="text-center">
+            <i class="fa fa-twitter-square fa-2x text-primary"></i>
+            <i class="fa fa-facebook-square fa-2x text-primary"></i>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
 </html>
