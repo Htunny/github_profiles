@@ -13,7 +13,7 @@ describe('Github Profile finder', function() {
 
   it('finds profiles', function() {
 
-    searchBox.sendKeys('Htunn');
+    searchBox.sendKeys('Htunny');
     searchButton.click();
 
     var profiles = element.all(by.repeater('user in searchCtrl.searchResult.items'));
