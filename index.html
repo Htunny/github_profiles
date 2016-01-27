@@ -11,6 +11,7 @@
   <script src="js/app.js"></script>
   <script src="js/gitUserSearchController.js"></script>
   <script src="js/searchFactory.js"></script>
+  <script src="js/repoFactory.js"></script>
   <link rel="stylesheet" type="text/css" href="js/stylesheet.css">
 </head>
 
@@ -29,9 +30,14 @@
     <ul class="list-group text-center" ng-show="searchCtrl.searchTerm">
       <p>Search results for <strong>{{searchCtrl.searchTerm}}</strong>:</p>
       <li class="inline-list" ng-repeat="user in searchCtrl.searchResult.items">
-        <p><a ng-href="{{user.html_url}}">{{user.login}}</a></p>
+      <p><a ng-href="{{user.html_url}}"><strong>{{user.login}}</strong></a></p>
         <img class="img-rounded" ng-src="{{user.avatar_url}}" height="170" width="170">
-      </li>
+        <p class="inline-list" ng-repeat="repo in searchCtrl.repoResult">
+          Repos: {{repo.full_name}}
+        </p>
+    </li>
+
+
     </ul>
     <!-- <li class="list-group-item">
     <img src="https://avatars.githubusercontent.com/u/30216?v=3&s=50">
