@@ -4,4 +4,16 @@ exports.config = {
   capabilities: {
     browserName: 'chrome'
   }
-}
+};
+
+// onPrepare: function(){
+//     require('protractor-http-mock').config = {
+//         rootDirectory: __dirname,
+//         protractorConfig: '/test/e2e/conf.js'
+//     };
+// }
+//
+// mocks: {
+//   default: ['Htunny'],
+//   dir: '/test/my-mocks'
+// }

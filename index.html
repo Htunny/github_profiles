@@ -28,12 +28,14 @@
       <button class="btn btn-success btn-md" ng-click="searchCtrl.doSearch()">Search</button>
     </form>
     <ul class="list-group text-center" ng-show="searchCtrl.searchTerm">
-      <p>Search results for <strong>{{searchCtrl.searchTerm}}</strong>:</p>
+      <p> Search results for <strong>{{searchCtrl.searchTerm}}</strong>:</p>
       <li class="inline-list" ng-repeat="user in searchCtrl.searchResult.items">
       <p><a ng-href="{{user.html_url}}"><strong>{{user.login}}</strong></a></p>
         <img class="img-rounded" ng-src="{{user.avatar_url}}" height="170" width="170">
+        <br>
+        Repositories:
         <p class="inline-list" ng-repeat="repo in searchCtrl.repoResult">
-          Repos: {{repo.full_name}}
+          {{repo.full_name}}
         </p>
     </li>
 

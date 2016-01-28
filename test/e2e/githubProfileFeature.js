@@ -17,6 +17,6 @@ describe('Github Profile finder', function() {
     searchButton.click();
 
     var profiles = element.all(by.repeater('user in searchCtrl.searchResult.items'));
-    expect(profiles.first(0).getText()).toEqual('Htunny');
+    expect(profiles.first(0).getText()).toContain('Htunny');
   });
 });
