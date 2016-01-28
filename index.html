@@ -25,22 +25,22 @@
     <div class="page-header">
     </div>
     <form class="form-horizontal text-center">
-    <input type="text" ng-model="searchCtrl.searchTerm" ng-change="searchCtrl.doSearch()" ng-model-options="{ updateOn: 'default blur', debounce: {'default': 500, 'blur': 0} }" placeholder="Enter a username">
-      <button class="btn btn-success btn-sm" ng-click="searchCtrl.doSearch()"><i class="fa fa-search fa-4px"></i> SEARCH</button>
+    <input class="textbox" type="text" ng-model="searchCtrl.searchTerm" ng-change="searchCtrl.doSearch()" ng-model-options="{ updateOn: 'default blur', debounce: {'default': 500, 'blur': 0} }" placeholder="Enter a username">
+      <button class="btn btn-success btn-md" ng-click="searchCtrl.doSearch()"><i class="fa fa-search fa-4px"></i> SEARCH</button>
     </form>
     <i class="fa fa-spinner fa-pulse" ng-show="list-group"></i>
     <ul class="list-group text-center" ng-show="searchCtrl.searchTerm" ng-show="searchCtrl.searchResult">
       <p>  <i class="fa fa-user"></i> search results for <strong>{{searchCtrl.searchTerm}}</strong>:</p>
       <li class="inline-list" ng-repeat="user in searchCtrl.searchResult.items">
-      <p><a ng-href="{{user.html_url}}"><strong><font size="4">{{user.login}}</font></strong></a>{{user.followers_url.count}}</p>
+      <p><a  ng-href="{{user.html_url}}"><strong><font size="4">{{user.login}}</font></strong></a>{{user.followers_url.count}}</p>
         <img class="img-rounded" ng-src="{{user.avatar_url}}" height="170" width="170">
-        <br>
-        <br>
+        <p class="repo">
         <strong><u>Latest GitHub Repositories</u></strong>
         <p class="inline-list" ng-repeat="repo in searchCtrl.repoResult | orderBy: 'created_at':true | limitTo:3">
-        <i text-align="right" class="fa fa-github fa-lg"></i> <strong><i>{{repo.name}}</i></strong>
-        <br> created on: {{repo.created_at | date: format : timezone}}
-        </p>
+        <i text-align="right" class="fa fa-github fa-lg"></i> <strong><i><a ng-href="{{repo.html_url}}" target="_blank">{{repo.name}}</a></i></strong>
+       created: {{repo.created_at | date: format : timezone}}
+     </p>
+     </p>
     </li>
 
 
