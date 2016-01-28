@@ -2,7 +2,7 @@
 <html lang="en" ng-app="GitUserSearch">
 <head>
   <meta charset="utf-8">
-  <title>Github user search</title>
+  <title>Github User Search</title>
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
   <script src="bower_components/jquery/dist/jquery.js"></script>
   <script src="bower_components/angular/angular.js"></script>
@@ -16,29 +16,33 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 </head>
 
-<body ng-controller="GitUserSearchController as searchCtrl">
+  <body ng-controller="GitUserSearchController as searchCtrl">
+    
   <div>
-
+  <div class="header">
     <div class="col-sm-12 text-center" >
-      <h1> <i class="fa fa-github-square fa-6px"></i> <a class="title" href="file:///Users/andrewhtun/Documents/github_profiles/index.html">GitHub User Search</a></h1>
+      <h1> <a ng-href="https://github.com/" target="_blank"> <i  class="fa fa-github-square fa-6px"></i></a> <a class="title" href="file:///Users/andrewhtun/Documents/github_profiles/index.html">GitHub User Search</a></h1>
     </div>
     <br>
 
     <div class="page-header">
     </div>
-
+  </div>
+    <div class="content" style="overflow:scroll";>
     <form class="form-horizontal text-center">
     <input class="textbox" type="text" ng-model="searchCtrl.searchTerm" ng-change="searchCtrl.doSearch()" ng-model-options="{ updateOn: 'default blur', debounce: {'default': 500, 'blur': 0} }" placeholder="Enter a username">
-      <button class="btn btn-success btn-md" ng-click="searchCtrl.doSearch()"><i class="fa fa-search fa-4px"></i> SEARCH</button>
+      <button class="btn btn-success btn-xs" ng-click="searchCtrl.doSearch()"><i class="fa fa-search fa-4px"></i> SEARCH</button>
     </form>
+
     <i class="fa fa-spinner fa-pulse" ng-show="list-group"></i>
     <ul class="list-group text-center" ng-show="searchCtrl.searchTerm" ng-show="searchCtrl.searchResult">
-      <p>  <i class="fa fa-user"></i> search results for <strong>{{searchCtrl.searchTerm}}</strong>:</p>
+      <p style="text-align: center">  <i class="fa fa-user"></i> search results for <strong>{{searchCtrl.searchTerm}}</strong>:</p>
+
       <li class="inline-list" ng-repeat="user in searchCtrl.searchResult.items">
-      <p><a  ng-href="{{user.html_url}}"><strong><font size="5">{{user.login}}</font></strong></a>{{user.followers_url.count}}</p>
-        <a ng-href="{{user.html_url}}" target="_blank"><img class="img-rounded" ng-src="{{user.avatar_url}}" height="170" width="170"></a>
+        <p><a  ng-href="{{user.html_url}}"><strong><font size="4">{{user.login}}</font></strong></a></p>
+        <a ng-href="{{user.html_url}}" target="_blank"><img class="img-rounded" ng-src="{{user.avatar_url}}" height="150" width="150"></a>
           <br>
-        <strong><u>Latest GitHub Repositories</u></strong>
+          <i class="fa fa-github fa-lg"> </i> <strong><u>Latest Repositories</u></strong>
         <p class="inline-list" ng-repeat="repo in searchCtrl.repoResult | orderBy: 'created_at':true | limitTo:3">
         <i text-align="right" class="fa fa-github fa-lg"></i> <strong><i><a ng-href="{{repo.html_url}}" target="_blank">{{repo.name}}</a></i></strong>
        created: {{repo.created_at | date: format : timezone}}
@@ -54,7 +58,8 @@
   </li> -->
 
   </div>
-</body>
+</div>
+
 
   <div id="footer">
   <div style="border-top: solid 1px #eee; padding-top: 1em;">
@@ -74,4 +79,5 @@
       </div>
     </div>
     </div>
+    </body>
   </html>
