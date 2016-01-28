@@ -19,14 +19,14 @@
 <body ng-controller="GitUserSearchController as searchCtrl">
   <div>
     <div class="col-sm-12 text-center" >
-      <h1> <i class="fa fa-github-square fa-6px fa-blue"></i> <a href="file:///Users/andrewhtun/Documents/github_profiles/index.html">GitHub User Search</a></h1>
+      <h1> <i class="fa fa-github-square fa-6px"></i> <a class="title" href="file:///Users/andrewhtun/Documents/github_profiles/index.html">GitHub User Search</a></h1>
     </div>
     <br>
-    <div class="page-header panel-default">
+    <div class="page-header">
     </div>
     <form class="form-horizontal text-center">
     <input type="text" ng-model="searchCtrl.searchTerm" ng-change="searchCtrl.doSearch()" ng-model-options="{ updateOn: 'default blur', debounce: {'default': 500, 'blur': 0} }" placeholder="Enter a username">
-      <button class="btn btn-success btn-sm" ng-click="searchCtrl.doSearch()"><i class="fa fa-search fa-4px"></i></button>
+      <button class="btn btn-success btn-sm" ng-click="searchCtrl.doSearch()"><i class="fa fa-search fa-4px"></i> SEARCH</button>
     </form>
     <i class="fa fa-spinner fa-pulse" ng-show="list-group"></i>
     <ul class="list-group text-center" ng-show="searchCtrl.searchTerm" ng-show="searchCtrl.searchResult">
