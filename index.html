@@ -13,29 +13,33 @@
   <script src="js/searchFactory.js"></script>
   <script src="js/repoFactory.js"></script>
   <link rel="stylesheet" type="text/css" href="js/stylesheet.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 </head>
 
 <body ng-controller="GitUserSearchController as searchCtrl">
   <div>
     <div class="col-sm-12 text-center" >
-      <h1><a href="file:///Users/andrewhtun/Documents/github_profiles/index.html">GitHub User Search</a></h1>
+      <h1> <i class="fa fa-github-square fa-6px fa-blue"></i> <a href="file:///Users/andrewhtun/Documents/github_profiles/index.html">GitHub User Search</a></h1>
     </div>
     <br>
-    <div class="page-header">
+    <div class="page-header panel-default">
     </div>
     <form class="form-horizontal text-center">
-      <input type="text" ng-model="searchCtrl.searchTerm" ng-change="searchCtrl.doSearch()" ng-model-options="{ updateOn: 'default blur', debounce: {'default': 500, 'blur': 0} }" placeholder="Enter a username">
-      <button class="btn btn-success btn-md" ng-click="searchCtrl.doSearch()">Search</button>
+    <input type="text" ng-model="searchCtrl.searchTerm" ng-change="searchCtrl.doSearch()" ng-model-options="{ updateOn: 'default blur', debounce: {'default': 500, 'blur': 0} }" placeholder="Enter a username">
+      <button class="btn btn-success btn-sm" ng-click="searchCtrl.doSearch()"><i class="fa fa-search fa-4px"></i></button>
     </form>
-    <ul class="list-group text-center" ng-show="searchCtrl.searchTerm">
-      <p> Search results for <strong>{{searchCtrl.searchTerm}}</strong>:</p>
+    <i class="fa fa-spinner fa-pulse" ng-show="list-group"></i>
+    <ul class="list-group text-center" ng-show="searchCtrl.searchTerm" ng-show="searchCtrl.searchResult">
+      <p>  <i class="fa fa-user"></i> search results for <strong>{{searchCtrl.searchTerm}}</strong>:</p>
       <li class="inline-list" ng-repeat="user in searchCtrl.searchResult.items">
-      <p><a ng-href="{{user.html_url}}"><strong>{{user.login}}</strong></a></p>
+      <p><a ng-href="{{user.html_url}}"><strong><font size="4">{{user.login}}</font></strong></a>{{user.followers_url.count}}</p>
         <img class="img-rounded" ng-src="{{user.avatar_url}}" height="170" width="170">
         <br>
-        Repositories:
-        <p class="inline-list" ng-repeat="repo in searchCtrl.repoResult">
-          {{repo.full_name}}
+        <br>
+        <strong><u>Latest GitHub Repositories</u></strong>
+        <p class="inline-list" ng-repeat="repo in searchCtrl.repoResult | orderBy: 'created_at':true | limitTo:3">
+        <i text-align="right" class="fa fa-github fa-lg"></i> <strong><i>{{repo.name}}</i></strong>
+        <br> created on: {{repo.created_at | date: format : timezone}}
         </p>
     </li>
 
