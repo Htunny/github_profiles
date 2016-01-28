@@ -46,7 +46,23 @@ li {
 .btn-success {
   height: 42px;
 }
+.top-bar {
+    background-color:#115EA2;
+    height:100px;
+    width:97.5;
+}
+#footer {
+  position: absolute;
+  bottom: 0;
+  height: 100px;
 
+  width: 100%;
+}
+body {
+   overflow-y: auto;
+   display: block;
+   max-height: 10em;    // For example
+}
 
 
 /*.page-header {

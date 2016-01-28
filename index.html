@@ -18,12 +18,15 @@
 
 <body ng-controller="GitUserSearchController as searchCtrl">
   <div>
+
     <div class="col-sm-12 text-center" >
       <h1> <i class="fa fa-github-square fa-6px"></i> <a class="title" href="file:///Users/andrewhtun/Documents/github_profiles/index.html">GitHub User Search</a></h1>
     </div>
     <br>
+
     <div class="page-header">
     </div>
+
     <form class="form-horizontal text-center">
     <input class="textbox" type="text" ng-model="searchCtrl.searchTerm" ng-change="searchCtrl.doSearch()" ng-model-options="{ updateOn: 'default blur', debounce: {'default': 500, 'blur': 0} }" placeholder="Enter a username">
       <button class="btn btn-success btn-md" ng-click="searchCtrl.doSearch()"><i class="fa fa-search fa-4px"></i> SEARCH</button>
@@ -32,38 +35,43 @@
     <ul class="list-group text-center" ng-show="searchCtrl.searchTerm" ng-show="searchCtrl.searchResult">
       <p>  <i class="fa fa-user"></i> search results for <strong>{{searchCtrl.searchTerm}}</strong>:</p>
       <li class="inline-list" ng-repeat="user in searchCtrl.searchResult.items">
-      <p><a  ng-href="{{user.html_url}}"><strong><font size="4">{{user.login}}</font></strong></a>{{user.followers_url.count}}</p>
-        <img class="img-rounded" ng-src="{{user.avatar_url}}" height="170" width="170">
-        <p class="repo">
+      <p><a  ng-href="{{user.html_url}}"><strong><font size="5">{{user.login}}</font></strong></a>{{user.followers_url.count}}</p>
+        <a ng-href="{{user.html_url}}" target="_blank"><img class="img-rounded" ng-src="{{user.avatar_url}}" height="170" width="170"></a>
+          <br>
         <strong><u>Latest GitHub Repositories</u></strong>
         <p class="inline-list" ng-repeat="repo in searchCtrl.repoResult | orderBy: 'created_at':true | limitTo:3">
         <i text-align="right" class="fa fa-github fa-lg"></i> <strong><i><a ng-href="{{repo.html_url}}" target="_blank">{{repo.name}}</a></i></strong>
        created: {{repo.created_at | date: format : timezone}}
      </p>
-     </p>
     </li>
 
 
     </ul>
+
     <!-- <li class="list-group-item">
     <img src="https://avatars.githubusercontent.com/u/30216?v=3&s=50">
     <a href="https://github.com/tansaku">tansaku</a>
   </li> -->
-</div>
-<br>
-<div style="border-top: solid 1px #eee; padding-top: 1em;">
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-12 text-center">
-        <p class="text-muted">GitHub User Search | © Copyright 2016, All Rights Reserved
-          <br>| GitHub User Search created by Andrew Htun, while at <a href="http://www.makersacademy.com/" target="_blank">Makers Academy</a> | <a href="https://github.com/Htunny" target="_blank">GitHub</a> | <a href="https://htunnycodes.wordpress.com/" target="_blank">Blog</a> |</p>
-          <p class="text-center">
-            <i class="fa fa-twitter-square fa-2x text-primary"></i>
-            <i class="fa fa-facebook-square fa-2x text-primary"></i>
-          </p>
+
+  </div>
+</body>
+
+  <div id="footer">
+  <div style="border-top: solid 1px #eee; padding-top: 1em;">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-sm-12 text-center">
+
+          <p class="text-muted">GitHub User Search | © Copyright 2016, All Rights Reserved
+            <br>| GitHub User Search created by Andrew Htun, while at <a href="http://www.makersacademy.com/" target="_blank">Makers Academy</a> | <a href="https://github.com/Htunny" target="_blank">GitHub</a> | <a href="https://htunnycodes.wordpress.com/" target="_blank">Blog</a> |</p>
+            <p class="text-center">
+              <i class="fa fa-twitter-square fa-2x text-primary"></i>
+              <i class="fa fa-facebook-square fa-2x text-primary"></i>
+            </p>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</body>
-</html>
+    </div>
+  </html>
