@@ -17,17 +17,19 @@
 </head>
 
   <body ng-controller="GitUserSearchController as searchCtrl">
-    
-  <div>
-  <div class="header">
-    <div class="col-sm-12 text-center" >
-      <h1> <a ng-href="https://github.com/" target="_blank"> <i  class="fa fa-github-square fa-6px"></i></a> <a class="title" href="file:///Users/andrewhtun/Documents/github_profiles/index.html">GitHub User Search</a></h1>
-    </div>
-    <br>
 
+  <div id="header">
+
+    <div class="col-sm-12 text-center" >
+      <h1> <a ng-href="https://github.com/" target="_blank"> <i  class="fa fa-github-square fa-6px"></i></a> <a class="title" href="file:///Users/andrewhtun/Documents/github_profiles/index.html">GitHub User Search</a>
+      </h1>
+    </div>
+
+    <br>
+</div>
     <div class="page-header">
     </div>
-  </div>
+
     <div class="content" style="overflow:scroll";>
     <form class="form-horizontal text-center">
     <input class="textbox" type="text" ng-model="searchCtrl.searchTerm" ng-change="searchCtrl.doSearch()" ng-model-options="{ updateOn: 'default blur', debounce: {'default': 500, 'blur': 0} }" placeholder="Enter a username">
@@ -42,9 +44,10 @@
         <p><a  ng-href="{{user.html_url}}"><strong><font size="4">{{user.login}}</font></strong></a></p>
         <a ng-href="{{user.html_url}}" target="_blank"><img class="img-rounded" ng-src="{{user.avatar_url}}" height="150" width="150"></a>
           <br>
+          <br>
           <i class="fa fa-github fa-lg"> </i> <strong><u>Latest Repositories</u></strong>
         <p class="inline-list" ng-repeat="repo in searchCtrl.repoResult | orderBy: 'created_at':true | limitTo:3">
-        <i text-align="right" class="fa fa-github fa-lg"></i> <strong><i><a ng-href="{{repo.html_url}}" target="_blank">{{repo.name}}</a></i></strong>
+         <strong><i><a ng-href="{{repo.html_url}}" target="_blank">{{repo.name}}</a></i></strong>
        created: {{repo.created_at | date: format : timezone}}
      </p>
     </li>
@@ -58,22 +61,22 @@
   </li> -->
 
   </div>
-</div>
 
 
   <div id="footer">
-  <div style="border-top: solid 1px #eee; padding-top: 1em;">
+  <div style="border-top: solid 1px #eee;">
     <div class="container">
       <div class="row">
 
         <div class="col-sm-12 text-center">
 
-          <p class="text-muted">GitHub User Search | © Copyright 2016, All Rights Reserved
-            <br>| GitHub User Search created by Andrew Htun, while at <a href="http://www.makersacademy.com/" target="_blank">Makers Academy</a> | <a href="https://github.com/Htunny" target="_blank">GitHub</a> | <a href="https://htunnycodes.wordpress.com/" target="_blank">Blog</a> |</p>
-            <p class="text-center">
-              <i class="fa fa-twitter-square fa-2x text-primary"></i>
-              <i class="fa fa-facebook-square fa-2x text-primary"></i>
-            </p>
+          <p style="font-size: 13px" class="text-muted">GitHub User Search | © Copyright 2016, All Rights Reserved
+            <br>| GitHub User Search created by Andrew Htun, while at <a href="http://www.makersacademy.com/" target="_blank">Makers Academy</a> | <a href="https://github.com/Htunny" target="_blank">GitHub</a> | <a href="https://htunnycodes.wordpress.com/" target="_blank">Blog</a> |
+              <br>
+            <i class="fa fa-twitter-square fa-2x text-primary"></i>
+            <i class="fa fa-facebook-square fa-2x text-primary"></i>
+
+             </p>
           </div>
         </div>
       </div>

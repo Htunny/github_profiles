@@ -55,17 +55,18 @@ li {
 #footer {
   position: absolute;
   bottom: 0;
-  height: 95px;
-  background-color: white;
+  height: 70px;
+  background-color: #e6e6e6;
 
   width: 100%;
 }
 
-​.header
+​#header
 {
   height:35px;
-  position: fixed;
-  background: #f2f2f2;
+  position: absolute;
+  background-color: #e6e6e6;
+  size: 30px;
 }
 .content
 {
@@ -78,7 +79,8 @@ li {
 }​
 
 .page-header {
-  height: 5px;
+  margin: 40px;
+
 }
 
 .btn-success {
